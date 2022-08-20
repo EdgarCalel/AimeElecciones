@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('nombres', 50);
             $table->string('apellidos', 50);
-            $table->integer('votos');
+            $table->integer('votos')->nullable();
             $table->string('Grado', 50);
             $table->string('seccion', 50);
             $table->string('imagen',250);
-            $table->string('Puesto',250);
+            $table->string('Puesto',250)->nullable();
             $table->timestamps();
         });
     }

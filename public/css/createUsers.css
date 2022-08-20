@@ -76,8 +76,9 @@ h1 {
 .registerDirectiva{
     display: flex;
 }
-.registerDirectiva1{
-
+.contentBoton{
+display: flex;
+flex-direction: column;
 }
 #imagenSeleccionada{
     border-radius: 20px;

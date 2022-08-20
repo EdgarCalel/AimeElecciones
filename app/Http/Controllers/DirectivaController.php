@@ -25,7 +25,6 @@ class DirectivaController extends Controller
     public function create()
     {
         $directivas= Directivas::all();
-
         return view('Directiva.create')->with('directivas', $directivas);
     }
 
@@ -38,7 +37,11 @@ class DirectivaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombres' => 'required', 'apellidos' => 'required','Grado' => 'required','seccion' => 'required', 'imagen' => 'required|image|mimes:jpeg,png,svg|max:1024'
+            'nombres' => 'required', 
+            'apellidos' => 'required',
+            'Grado' => 'required',
+            'seccion' => 'required', 
+            'imagen' => 'required|image|mimes:jpeg,png,svg|max:1024'
         ]);
 
          $directivas = $request->all();
@@ -87,11 +90,10 @@ var_dump($directivas['imagen']);
     public function update(Request $request, $id)
     {
         $directiva =  Directivas::find($id);
-        $directiva->nombres = $request->get('nombres');
-        $directiva->apellidos = $request->get('apellidos');
-        $directiva->votos = $request->get('votos');
-        $directiva->grado = $request->get('Grado');
-        $directiva->seccion = $request->get('seccion');
+        $calculo =$directiva->votos;
+        $directiva->votos = $calculo +=1;
+        error_log($directiva ->votos);
+ 
 
         $directiva->save();
         return redirect('/directiva');

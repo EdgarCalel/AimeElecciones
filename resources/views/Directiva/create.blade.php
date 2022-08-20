@@ -25,11 +25,17 @@
              
               <div class="col-md-4">
                 <div class="form-group">
-                <input type="text" class="form-control form-control-lg" placeholder="puesto" id="puesto" name="puesto" tabindex="1" required>
+                <input type="text" class="form-control form-control-lg" placeholder="puesto" id="puesto" name="puesto" tabindex="1">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
+                <!-- <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+  <option selected>Grado</option>
+  <option value="1">Primero</option>
+  <option value="2">Segundo</option>
+  <option value="3">Tercero</option>
+</select> -->
                 <input type="text" class="form-control form-control-lg" placeholder="Grado" id="grado" name="Grado" tabindex="1" required>
                 </div>
               </div>
@@ -68,35 +74,7 @@
       </div>
     </div>
 
-<div class="container p-5">
-    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-            @foreach($directivas as $directiva)
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <div class="text-center">
-                        <div class="img-hover-zoom img-hover-zoom--colorize">
-                            <img class="shadow" src="/imagen/{{$directiva->imagen}}" width="60%">
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="clearfix mb-3">
-                        </div>
-                        <div class="my-2 text-center">
-                           <h1>{{$directiva->nombres}} </h1>
-                        </div>
-                        <div class="mb-3">
-                            <h2 class="text-uppercase text-center role">{{$directiva->apellidos}}</h2>
-                        </div>
-                        <div class="box">
-                        <button class="btn btn-primary">{{$directiva->Puesto}}</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-    </div>
+
 
 @endsection
 

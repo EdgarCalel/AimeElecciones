@@ -6353,7 +6353,7 @@
             "license": [
                 "MIT"
             ],
-            "description": "Create deep copies (clones) of your objects",
+            "description": " deep copies (clones) of your objects",
             "keywords": [
                 "clone",
                 "copy",

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Votaciones | liceo Coatepeque</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -20,17 +20,17 @@
 
             }
             .fondoPrincipal{
-                background: rgb(22,75,4);
-background: linear-gradient(16deg, rgba(22,75,4,1) 0%, rgba(7,218,198,1) 35%, rgba(76,217,53,1) 56%, rgba(44,77,1,1) 100%);
+                background: rgb(0,112,125);
+background: linear-gradient(330deg, rgba(0,112,125,1) 0%, rgba(106,232,220,1) 35%, rgba(53,92,217,1) 56%, rgba(37,1,77,1) 100%);
                 width:100%;
-                height: 94vh;
+                height: 90vh;
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
             .fondoPrincipal img{
-                width:400px;
-                border-radius: 50px;
+                width:600px;
+                border-radius: 15px;
                 box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
             }
         </style>
@@ -40,18 +40,20 @@ background: linear-gradient(16deg, rgba(22,75,4,1) 0%, rgba(7,218,198,1) 35%, rg
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/directiva') }}" class="btn btn-primary">Directivas</a>
+                    <a href="{{ url('/directiva') }}" class="btn btn-success">Directivas</a>
+                    <!-- <a href="{{ url('/logout') }}" class="btn btn-primary">logout</a> -->
+                    
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary">Log in</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
                         @endif
                     @endauth
                 </div>
             @endif
 <div class="fondoPrincipal">
-  <img src="https://www.frometowncouncil.gov.uk/wp-content/uploads/2019/05/vote-3932253_1280.jpg" alt="">  
+  <img src="{{ asset('img/Logo3.jpeg') }}" alt="">  
 </div>
 
         </div>

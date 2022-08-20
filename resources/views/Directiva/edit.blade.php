@@ -1,32 +1,41 @@
 @extends('layouts.plantillabase')
 
 @section('contenido')
-<h2>editar registros</h2>
+<link rel="stylesheet" href="{{ asset('css/createUsers.css') }}">
+<h2>Quien soy?</h2>
 <form action="/directiva/{{$directiva->id}}"  method="post">
 
     @csrf
     @method('PUT')
-<div class="mb-3">
-    <label class="form-label">Nombres</label>
-    <input type="text" class="form-control" id="nombres" name="nombres" tabindex="1" value="{{$directiva->nombres}}">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Apellidos</label>
-    <input type="text" class="form-control" id="apellidos" name="apellidos" tabindex="2" value="{{$directiva->apellidos}}">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">votos</label>
-    <input type="number" class="form-control" id="votos" name="votos" tabindex="3" value="{{$directiva->votos}}">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Grado</label>
-    <input type="text" class="form-control" id="grado" name="Grado" tabindex="4" value="{{$directiva->Grado}}">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Seccion</label>
-    <input type="text" class="form-control" id="seccion" name="seccion" tabindex="5" value="{{$directiva->seccion}}">
-  </div>
+    <div class="container p-5">
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+            
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="text-center">
+                        <div class="img-hover-zoom img-hover-zoom--colorize">
+                            <img class="shadow" src="/imagen/{{$directiva->imagen}}" width="60%">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                        </div>
+                        <div class="my-2 text-center">
+                           <h1>{{$directiva->nombres}} </h1>
+                
+                        </div>
+                        <div class="box">
+                          <h2>{{$directiva->Puesto}}</h2>
+                        </div>
+                        <button class="btn btn-success">Votar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
 <a href="/directiva" class="btn btn-secondary" tabindex="6">Cancelar</a>
-  <button type="submit" class="btn btn-primary" tabindex="7">Submit</button>
+
 </form>
 @endsection

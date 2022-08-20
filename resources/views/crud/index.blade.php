@@ -8,6 +8,7 @@
 
 @section('content')
     <p>inicio de crud</p>
+    <h1>hola como estas</h1>
 @stop
 
 @section('css')
