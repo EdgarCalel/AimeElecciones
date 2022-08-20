@@ -74,8 +74,9 @@
             <div class="col">
                 <div class="card h-100 shadow-sm">
                     <div class="text-center">
-                        <div class="img-hover-zoom img-hover-zoom--colorize">
-                            <img class="shadow" src="/imagen/{{$directiva->imagen}}" width="60%">
+                        <div class="img-hover-zoom img-hover-zoom--colorize imgHover">
+                            <img class="shadow" src="/imagen/{{$directiva->imagen}}" alt>
+    
                         </div>
                     </div>
                     <div class="card-body">

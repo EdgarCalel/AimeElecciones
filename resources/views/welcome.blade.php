@@ -17,16 +17,18 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
-
+                
             }
             .fondoPrincipal{
                 background: rgb(0,112,125);
-background: linear-gradient(330deg, rgba(0,112,125,1) 0%, rgba(106,232,220,1) 35%, rgba(53,92,217,1) 56%, rgba(37,1,77,1) 100%);
+                background: linear-gradient(330deg, rgba(0,112,125,1) 0%, rgba(106,232,220,1) 35%, rgba(53,92,217,1) 56%, rgba(37,1,77,1) 100%);
                 width:100%;
-                height: 90vh;
+                height: 80vh;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                margin:0;
+                padding: 0;
             }
             .fondoPrincipal img{
                 width:600px;
@@ -53,7 +55,7 @@ background: linear-gradient(330deg, rgba(0,112,125,1) 0%, rgba(106,232,220,1) 35
                 </div>
             @endif
 <div class="fondoPrincipal">
-  <img src="{{ asset('img/Logo3.jpeg') }}" alt="">  
+  <img img-fluid src="{{ asset('img/Logo3.jpeg') }}" alt="">  
 </div>
 
         </div>

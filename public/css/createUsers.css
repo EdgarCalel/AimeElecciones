@@ -3,7 +3,11 @@
 :root {
     --font3: 'Roboto', sans-serif;
 }
-
+body{
+    background: url('https://wallpaper.dog/large/20374282.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 .h1,
 h1 {
     font-size: 1.5rem;
@@ -173,4 +177,9 @@ border-bottom-left-radius: 25px;
     h1 {
         font-size: 2rem;
     }
+}
+
+.imgHover img{
+width: 150px;
+height: 150px;
 }
