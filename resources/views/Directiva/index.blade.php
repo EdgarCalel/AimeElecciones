@@ -2,12 +2,19 @@
 
 @section('contenido')
 <link rel="stylesheet" href="{{ asset('css/createUsers.css') }}">
-<a href="directiva/create" class="btn btn-primary">Crear miembros de junta directiva</a>
+
+@role('Profesor')
+<a href="directiva/create" class="btn btn-primary">Crear miembros de junta directiva Profesor</a>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Registros de estudiante
+</button>
+@endrole
+<a href="/dashboard" class="btn btn-primary">Dashboard</a>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Registros
-</button>
+@role('estudiante')
+
+@endrole
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

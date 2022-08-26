@@ -23,12 +23,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/directiva', function () {
-        return view('directiva');
-    })->name('directiva');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
-
-Route::get('dash', 'App\Http\Controllers\DashboardController@index');
+Route::resource('roles', 'App\Http\Controllers\RolesController');
 Route::resource('directiva', 'App\Http\Controllers\DirectivaController');
 Route::get('/crud', function () {return view('crud.index');});
 
