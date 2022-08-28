@@ -1,7 +1,13 @@
-@extends('layouts.plantillabase');
+@extends('adminlte::page')
 
-@section('contenido')
-<link rel="stylesheet" href="{{ asset('css/createUsers.css') }}">
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Dashboard</h1>
+@stop
+
+@section('content')
+
 <a href="directiva/create" class="btn btn-primary">Crear miembros de junta directiva</a>
 
 <!-- Button trigger modal -->
@@ -99,4 +105,13 @@
         </div>
     </div>
     </div>
-@endsection
+    @stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('css/createUsers.css') }}">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop
