@@ -20,5 +20,6 @@ class UserSeeder extends Seeder
             'email'=>'edgar2@hotmail.com',
             'password'=> bcrypt('123456789')
         ])->assignRole('Profesor');
+
     }
 }

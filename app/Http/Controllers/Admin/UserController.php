@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -14,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+
+        return view('admin.users.index');
     }
 
     /**
@@ -55,9 +58,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user)
     {
-        //
+         $roles = Role::all();
+         $user = User::find($user);
+      
+         return view('admin.users.edit', compact('user', 'roles'));
+
+        // return view('admin.users.edit')->with('user', $user);
+
     }
 
     /**
@@ -67,9 +76,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user)
     {
-        //
+        $user = User::find($user);
+    
+        $user->roles()->sync($request->roles);
+        return redirect()->route('usuarios.edit', $user)->with('status','se registro correctamente');
     }
 
     /**

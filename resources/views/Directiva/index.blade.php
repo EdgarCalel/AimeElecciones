@@ -3,12 +3,14 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Directiva</h1>
 @stop
 
 @section('content')
-
+@can('directiva.create')
+    
 <a href="directiva/create" class="btn btn-primary">Crear miembros de junta directiva</a>
+@endcan
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

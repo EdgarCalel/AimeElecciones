@@ -20,10 +20,15 @@ class RoleSeeder extends Seeder
         $roleProfesor = Role::create(['name'=>'Profesor']);
         $rolestudent = Role::create(['name'=>'Estudiante']);
 
-        Permission::create(['name'=>'admin.directiva.index'])->syncRoles([$roleAdmin, $roleProfesor, $rolestudent]);
-        Permission::create(['name'=>'admin.directiva.create'])->syncRoles([$roleAdmin, $roleProfesor]);
-        Permission::create(['name'=>'admin.directiva.edit'])->syncRoles([$roleAdmin]);
-        Permission::create(['name'=>'admin.directiva.destroy'])->syncRoles([$roleAdmin]);
+        Permission::create(['name'=>'directiva.index'])->syncRoles([$roleAdmin, $roleProfesor, $rolestudent]);
+        Permission::create(['name'=>'directiva.create'])->syncRoles([$roleAdmin]);
+        Permission::create(['name'=>'directiva.edit'])->syncRoles([$roleAdmin]);
+
+        Permission::create(['name'=>'usuarios.index'])->syncRoles([$roleAdmin]);
+        Permission::create(['name'=>'usuarios.edit'])->syncRoles([$roleAdmin]);
+        Permission::create(['name'=>'usuarios.update'])->syncRoles([$roleAdmin]);
+
+        Permission::create(['name'=>'directiva.destroy'])->syncRoles([$roleAdmin]);
 
         Permission::create(['name'=>'admin.home'])->syncRoles([$roleAdmin, $roleProfesor, $rolestudent]);
 

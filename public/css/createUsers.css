@@ -88,42 +88,44 @@ flex-direction: column;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-.custom-file-input {
-    border-radius: 20px;
-    padding: 5px;
-    color: #999;
-    border: 1px solid #000;
-    vertical-align: middle;
+
+#custom-file-inputs {
+    border-radius: 20px !important;
+    padding: 5px !important;
+    color: rgb(0, 0, 0) !important;
+    border: 1px solid #000 !important;
+    vertical-align: middle !important;
+    background-color: black !important;
   }
-  .custom-file-input::-webkit-file-upload-button {
-    visibility: hidden;
+  #custom-file-inputs::-webkit-file-upload-button {
+    visibility: hidden !important;
   }
-  .custom-file-input::before {
-    content: 'Seleccionar';
-    color: #666;
-    display: inline-block;
-    background: #fff;
-    border: 1px solid #999;
-    border-radius: 20px;
-    margin: -3px 0 -3px -3px;
-    padding: 5px 20px;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    cursor: pointer;
-    text-align: center;
-    text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 10pt;
+  #custom-file-inputs::before {
+    content: 'Seleccionar' !important;
+    color: #666 !important;
+    display: inline-block !important;
+    background: #fff !important;
+    border: 1px solid #999 !important;
+    border-radius: 20px !important;
+    margin: -3px 0 -3px -3px !important;
+    padding: 5px 20px !important;
+    outline: none !important;
+    white-space: nowrap !important;
+    -webkit-user-select: none !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    text-shadow: 1px 1px #fff !important;
+    font-weight: 700 !important;
+    font-size: 10pt !important;
   }
-  .custom-file-input:hover::before {
-    border-color: black;
+  #custom-file-inputs:hover::before {
+    border-color: black !important;
   }
-  .custom-file-input:active {
-    outline: 0;
+  #custom-file-inputs:active {
+    outline: 0 !important;
   }
-  .custom-file-input:active::before {
-    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+  #custom-file-inputs:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9) !important; 
   }
   
   
@@ -163,6 +165,10 @@ border-bottom-left-radius: 25px;
 	}
 }
 
+.file-custom{
+    background-color: #000 !important;
+    z-index: 1000;
+}
 
 /* MEDIA */
 

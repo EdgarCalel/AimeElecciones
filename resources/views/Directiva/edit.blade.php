@@ -1,8 +1,13 @@
-@extends('layouts.plantillabase')
+@extends('adminlte::page')
 
-@section('contenido')
-<link rel="stylesheet" href="{{ asset('css/createUsers.css') }}">
-<h2>Quien soy?</h2>
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Acerca de mi</h1>
+@stop
+
+@section('content')
+    
 <form action="/directiva/{{$directiva->id}}"  method="post">
 
     @csrf
@@ -38,4 +43,10 @@
 <a href="/directiva" class="btn btn-secondary" tabindex="6">Cancelar</a>
 
 </form>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/createUsers.css') }}">
+@stop
+
+

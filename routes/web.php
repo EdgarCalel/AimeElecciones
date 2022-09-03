@@ -28,10 +28,4 @@ Route::middleware([
     })->name('directiva');
 });
 
-Route::get('dash', 'App\Http\Controllers\DashboardController@index');
 Route::resource('directiva', 'App\Http\Controllers\DirectivaController');
-Route::get('/crud', function () {return view('crud.index');});
-
-Route::get('/crud/create', function () {
-    return view('crud.create');
-});
