@@ -1,4 +1,4 @@
-@extends('layouts.plantillabase');
+@extends('adminlte::page')
 
 @section('contenido')
 <link rel="stylesheet" href="{{ asset('css/createUsers.css') }}">
@@ -106,4 +106,13 @@
         </div>
     </div>
     </div>
-@endsection
+    @stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('css/createUsers.css') }}">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop

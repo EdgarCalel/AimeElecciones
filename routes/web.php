@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.index');
 });
 
 
@@ -27,10 +27,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+<<<<<<< HEAD
 Route::resource('roles', 'App\Http\Controllers\RolesController');
-Route::resource('directiva', 'App\Http\Controllers\DirectivaController');
-Route::get('/crud', function () {return view('crud.index');});
+=======
 
-Route::get('/crud/create', function () {
-    return view('crud.create');
-});
+>>>>>>> 9eb122f9a7794cbc8ac7443c67e3d0cad71aff20
+Route::resource('directiva', 'App\Http\Controllers\DirectivaController');

@@ -1,6 +1,13 @@
-@extends('layouts.plantillabase');
 
-@section('contenido')
+@extends('adminlte::page')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Dashboard</h1>
+@stop
+
+@section('content')
 <link rel="stylesheet" href="{{ asset('css/createUsers.css') }}">
     <div class="registerDirectiva">
       <div class="registerDirectiva1 col-8 ">
@@ -44,11 +51,11 @@
                 <input type="text" class="form-control form-control-lg" placeholder="Seccion" id="seccion" name="seccion" tabindex="1" required>
                 </div>
               </div>
-              <div>
+              <div id="formColors">
 
               <label class="file">
-  <input type="file" name="imagen" id="imagen" class="hidden mb-3 custom-file-input" aria-label="File browser example">
-  <span class="file-custom"></span>
+  <input type="file" name="imagen" id="imagen" class="hidden mb-3 custom-file-inputs" aria-label="File browser example">
+  <span id="file-custom"></span>
 </label>
 
   </div>
@@ -73,10 +80,11 @@
   </div>
       </div>
     </div>
+@stop
 
-
-
-@endsection
+@section('css')
+    
+@stop
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
