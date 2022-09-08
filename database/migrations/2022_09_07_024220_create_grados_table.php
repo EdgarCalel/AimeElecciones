@@ -13,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('directivas', function (Blueprint $table) {
+        Schema::create('grados', function (Blueprint $table) {
             $table->id();
-            $table->string('apellidos', 50);
-            $table->string('nombres', 50);
-            $table->integer('votos')->nullable();
-            $table->string('Grado', 50);
+            $table->string('nombre_grado', 50);
             $table->string('seccion', 50);
-            $table->string('imagen',250);
-            $table->string('Puesto',250)->nullable();
-            $table->boolean('Directiva')->default(0);
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('directivas');
+        Schema::dropIfExists('grados');
     }
 };

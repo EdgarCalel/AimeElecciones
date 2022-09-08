@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Directivas;
-use App\Models\Estudiante;
-class DirectivaController extends Controller
+use App\Models\Grado;
+use Illuminate\Support\Facades\DB;
+
+class GradoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,8 @@ class DirectivaController extends Controller
      */
     public function index()
     {
-        $idUser = auth()->id();
-        $directivas= Directivas::all()
-        ->where('Directiva', "=", 0);
-        return view('Directiva.index')->with('directivas', $directivas);
+        $grado = Grado::all();
+        return view('Grado.index', compact('grado'));
     }
 
     /**
@@ -27,8 +26,7 @@ class DirectivaController extends Controller
      */
     public function create()
     {
-     
-        return view('Directiva.create');
+       return view('Grado.create');
     }
 
     /**
@@ -39,18 +37,13 @@ class DirectivaController extends Controller
      */
     public function store(Request $request)
     {
+        $user = new Grado();
+        $user ->nombre_grado = $request->get('nombreGrado');
+        $user ->seccion = $request->get('seccion');
 
-         $directivas = $request->all();
-
-         if($imagen = $request->file('imagen')) {
-             $rutaGuardarImg = 'imagen/';
-             $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
-             $imagen->move($rutaGuardarImg, $imagenProducto);
-             $directivas['imagen'] = "$imagenProducto";
-         }
-var_dump($directivas['imagen']);
-         Directivas::create($directivas);
-         return redirect('/directiva');
+        $user ->save();
+    
+        return redirect()->route('grado.create', $user)->with('status','se registro correctamente');
     }
 
     /**
@@ -72,8 +65,8 @@ var_dump($directivas['imagen']);
      */
     public function edit($id)
     {
-        $directiva = Directivas::find($id);
-        return view('Directiva.edit')->with('directiva', $directiva);
+        $grado = Grado::find($id);
+        return view('Grado.edit', compact('grado'));
     }
 
     /**
@@ -85,14 +78,13 @@ var_dump($directivas['imagen']);
      */
     public function update(Request $request, $id)
     {
-        $directiva =  Directivas::find($id);
-        $calculo =$directiva->votos;
-        $directiva->votos = $calculo +=1;
-        error_log($directiva ->votos);
- 
+        $user = grado::find($id);
+        $user ->nombre_grado = $request->get('nombreGrado');
+        $user ->seccion = $request->get('seccion');
 
-        $directiva->save();
-        return redirect('/directiva');
+        $user ->save();
+    
+        return redirect()->route('grado.edit', $user)->with('status','se registro correctamente');
     }
 
     /**
@@ -103,8 +95,9 @@ var_dump($directivas['imagen']);
      */
     public function destroy($id)
     {
-        $directiva = Directivas::find($id);
-        $directiva->delete();
-        return redirect('/directiva');
+  
+        $grado = Grado::find($id);
+        $grado->delete();
+        return redirect('/grado');
     }
 }

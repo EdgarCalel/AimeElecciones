@@ -261,6 +261,7 @@ return [
     */
 
     'menu' => [
+        
         // Navbar items:
         // [
         //     'type'         => 'navbar-search',
@@ -278,10 +279,25 @@ return [
             'can'=> 'admin.home'
         ],
         [
-            'text' => 'Usuarios',
+            'text' => 'Roles',
             'url'  => 'usuarios',
-            'icon' => 'fas fa-users fa-fw',
+            'icon' => 'fas fa-users-cog',
             'can'=>'usuarios.index'
+        ],
+        [
+            'text' => 'Estudiante',
+            'url'  => 'estudiante',
+            'icon' => 'fas fa-user-graduate',
+        ],
+        [
+            'text' => 'Catedraticos',
+            'url'  => 'profesor',
+            'icon' => 'fas fa-user-graduate',
+        ],
+        [
+            'text' => 'Grado',
+            'url'  => 'grado',
+            'icon' => 'fas fa-chalkboard',
         ],
         ['header' => 'account_settings'],
         [
