@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Estudiante;
+use App\Models\User;
 use App\Models\Grado;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class EstudianteController extends Controller
 {
@@ -22,7 +24,7 @@ class EstudianteController extends Controller
         ->where('id_grado', '=', $userLogueado)
         ->get();
 
-        // $estudiante = Estudiante::all();
+        //   $estudiante = Estudiante::all();
         return view('estudiante.index', compact('userLogueado', 'estudiante'));
     }
 
@@ -33,9 +35,11 @@ class EstudianteController extends Controller
      */
     public function create()
     {
+        $estudiante = Estudiante::all();
         $codRandom =Str::random(10);
+        
         $gradoSel = Grado::all();
-        return view('estudiante.create', compact('codRandom','gradoSel'));
+        return view('estudiante.create', compact('codRandom','gradoSel', 'estudiante'));
     }
 
     /**
@@ -47,30 +51,36 @@ class EstudianteController extends Controller
     public function store(Request $request)
     {
         $codRandom =Str::random(10);
-        $user = new Estudiante();
-        $user ->nombre = $request->get('nombre');
-        $user ->apellido = $request->get('apellido');
-        $user ->escolaridad = $request->get('escolaridad');
-        $user ->codigo_votacion = "$codRandom";
-        $user ->id_grado = $request->get('grado');
-        $user ->id_grado = $request->get('grado');
+        $codStudntEmail =Str::random(5);
+        $user = $request->all();
+        $estudiante = $request->all();
+
         if($imagen = $request->file('imagen')) {
-            $rutaGuardarImg = 'imagen/';
+            $rutaGuardarImg = 'imagen/estudiante/';
             $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
             $imagen->move($rutaGuardarImg, $imagenProducto);
-            $user ->foto_perfil  = "$imagenProducto";
+            $estudiante['foto_perfil']  = "$imagenProducto";
         }
-        
+        $nombre = $request->get('nombre');
+        $nombre1 = explode(" ", $nombre);
+        $apellido = $request->get('apellido');
+        $apellido2 = explode(" ", $apellido);
+        $estudiante['email']  = strtolower($nombre1[0]) . strtolower($apellido2[0]) ."-" .strtolower($codStudntEmail) ."@hotmail.com";
+        $clave = Hash::make('123456789');
+        $estudiante['password'] = "$clave";
+        $estudiante['codigo_votacion']  = "$codRandom";
+        $estudiante['codigo_student']  = 0;
+        $estudiante['codigo_status']  = 0;
 
-
-
-        $user ->save();
-        return view('estudiante.index')->with('status','se registro correctamente');
-    
-        // return redirect()->route('estudiante', $user)->with('status','se registro correctamente');
-
-
-
+        $user['email']  = strtolower($nombre1[0]) . strtolower($apellido2[0]) ."-" .strtolower($codStudntEmail) ."@hotmail.com";
+        $user['name'] = $request->get('nombre');
+        $user['lastname'] = $request->get('apellido');
+        $user['password'] = "$clave";
+        $user['estudiante'] = 1;
+        User::create($user)->assignRole('Estudiante');
+        Estudiante::create($estudiante);
+       
+        return redirect('/estudiante')->with('status','se registro correctamente');
     }
 
     /**

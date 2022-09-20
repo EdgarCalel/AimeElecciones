@@ -1,13 +1,18 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <!-- <x-jet-authentication-card-logo /> -->
-            <img src="{{ asset('img/Escudo.jpg') }}" alt="" style="width:150px; border-radius:40px">
+    <div class="contenido_login" >
+        <div>
+            <h3> colegio</h3>
+        </div>
+        <div class="contenido_loginE">
+            <link rel="stylesheet" href="/css/login.css">
+        <x-jet-authentication-card>
+            <x-slot name="logo" >
+                  
+            <img class="logoEmpresa" src="{{ asset('img/Escudo.jpg') }}" alt="" style="width:150px; border-radius:40px">
         </x-slot>
         
         <x-jet-validation-errors class="mb-4" />
         
-        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">
                 {{ session('status') }}
@@ -45,5 +50,9 @@
                 </x-jet-button>
             </div>
         </form>
+
+   
     </x-jet-authentication-card>
+</div>
+</div>
 </x-guest-layout>

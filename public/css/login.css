@@ -1,0 +1,53 @@
+.contenido_login{
+    display: flex; 
+flex-direction: column;
+    align-items: center;
+    height: 100vh; 
+    width:100%;
+   justify-content:space-evenly;
+    background: url('https://papers.co/wallpaper/papers.co-sn05-sky-blue-blur-gradation-40-wallpaper.jpg?download=true');
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
+.contenido_loginE{
+    display: flex;
+    justify-content: space-evenly;
+    width:100%;
+}
+
+@media only screen and (max-width: 500px) {
+    .contenido_login{ 
+        height: 100vh; 
+        width:100%;
+        overflow: auto;
+    }
+    .contenido_loginE{
+        display: flex; 
+        flex-direction: column;
+        width: 90%;
+
+    }
+    .logoEmpresa{
+    width: calc(20% - 30px);
+    }
+    
+}
+@media only screen and (max-width: 376px) {
+    .contenido_login{ 
+        height: 100vh; 
+        width:100vw;
+        overflow: auto;
+    }
+    .contenido_loginE{
+        display: flex; 
+        flex-direction: column;
+        width: 80%;
+        height: 50%;
+
+    }
+    .logoEmpresa{
+        width: 70%;
+    }
+    
+}

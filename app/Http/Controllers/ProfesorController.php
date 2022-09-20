@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Grado;
+use Illuminate\Support\Facades\Hash;
 
 class ProfesorController extends Controller
 {
@@ -16,7 +17,7 @@ class ProfesorController extends Controller
     public function index()
     {
         $profesor = User::all();
-        return view('Profesor.index', compact('profesor'));
+        return view('Profesor.index')->with('profesor', $profesor);
     }
 
     /**
@@ -38,25 +39,22 @@ class ProfesorController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
-        $user ->name = $request->get('nombre');
-        $user ->lastname = $request->get('apellido');
-        $user ->id_grado = $request->get('grado');
-        $user ->email = $request->get('email');
-        $user ->escolaridad = $request->get('escolaridad');
-        $user ->password = "123456789";
+        $profesor = $request->all();
+
         if($imagen = $request->file('imagen')) {
-            $rutaGuardarImg = 'imagen/';
+            $rutaGuardarImg = 'imagen/profesor/';
             $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
             $imagen->move($rutaGuardarImg, $imagenProducto);
-            $user ->profile_photo_path  = "$imagenProducto";
+            $profesor['profile_photo_path'] = "$imagenProducto";
         }
-        
+        $clave = Hash::make('123456789');
+        $profesor['password'] = "$clave";
+        User::create($profesor);
+        return redirect('/profesor');
 
 
-
-        $user ->save();
-        return view('Profesor.index')->with('status','se registro correctamente');
+        // $user ->save();
+        // return view('Profesor.index')->with('status','se registro correctamente');
     }
 
     /**

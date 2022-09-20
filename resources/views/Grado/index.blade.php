@@ -4,7 +4,9 @@
 
 @section('content_header')
     <h1>todos los grados</h1>
+    @can('grado.create')                 
     <a class="btn btn-success" href="grado/create">Crear</a>
+    @endcan
 @stop
 
 @section('content')
@@ -32,7 +34,7 @@
                             <td>{{$st -> nombre_grado}}</td>
                             <td>{{$st -> seccion}}</td>
                             <td width="10px">
-                                
+                                @can('grado.edit')
                                 <a class="btn btn-primary" href="grado/{{$st->id}}/edit">Editar</a>
                                 <form action="{{route ('grado.destroy', $st->id)}}" method="POST">
                                     @csrf
@@ -40,6 +42,7 @@
                                     <button type="submit" class="btn btn-danger">Borrar</button>
 
                                 </form>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

@@ -5,34 +5,27 @@
 @section('content_header')
     <h1>crear profesor</h1>
 @stop
-
 @section('content')
 @if (session('status'))
 <div class="alert alert-success">
     <strong>{{session('status')}}</strong>
-
 </div>
-
-        
     @else
     <div class="alert alert-succes">
         <strong>{{session('status')}}</strong>
-    
     </div>
 @endif
-
     <div class="card">
         <div class="card-body">
-            <form class="row g-3" action="/profesor" method="POST" enctype="multipart/form-data">
+            <form class="row g-3" action="/profesor" method="post" enctype="multipart/form-data">
                 @csrf
-              
                 <div class="col-md-6">
                     <label for="inputEmail4" class="form-label">Nombre</label>
-                    <input id="nombre" name="nombre" type="text" class="form-control" ">
+                    <input id="nombre" name="name" type="text" class="form-control" ">
                     </div>
                     <div class="col-md-6">
                         <label for="inputPassword4" class="form-label">Apellido</label>
-                        <input id="apellido" name="apellido" type="text" class="form-control" >
+                        <input id="apellido" name="lastname" type="text" class="form-control" >
                     </div>
                     <div class="col-md-6">
                         <label for="inputPassword4" class="form-label">email</label>
@@ -48,11 +41,10 @@
                     </div>
                     <div class="col-md-4">
                         <label for="inputPassword4" class="form-label">grado</label>
-                        <select name="grado" class="form-control form-select-md col-md-12">
+                        <select name="id_grado" class="form-control form-select-md col-md-12">
                             <option selected>Selecciona escolaridad</option>
                              @foreach ($gradoSel as $item)
                     <option  value="{{ $item->id }}">{{ $item->nombre_grado }} {{ $item->seccion }}</option>
-                    
                     @endforeach
                     </select>
                 </div>

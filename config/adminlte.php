@@ -282,28 +282,31 @@ return [
             'text' => 'Roles',
             'url'  => 'usuarios',
             'icon' => 'fas fa-users-cog',
-            'can'=>'usuarios.index'
         ],
         [
             'text' => 'Estudiante',
-            'url'  => 'estudiante',
+            'route'  => 'estudiante',
             'icon' => 'fas fa-user-graduate',
+            'can'=> 'estudiante.index'
         ],
         [
             'text' => 'Catedraticos',
-            'url'  => 'profesor',
+            'route'  => 'profesor',
             'icon' => 'fas fa-user-graduate',
+            'can'=> 'profesor.index'
         ],
         [
             'text' => 'Grado',
-            'url'  => 'grado',
+            'route'  => 'grado',
             'icon' => 'fas fa-chalkboard',
+            'can'=> 'grado.index'
         ],
         ['header' => 'account_settings'],
         [
             'text' => 'Directiva',
-            'url'  => 'directiva',
+            'route'  => 'directiva',
             'icon' => 'fas fa-fw fa-user',
+            'can'=> 'directiva.index'
         ]
     ],
 

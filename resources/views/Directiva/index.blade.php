@@ -7,6 +7,19 @@
 @stop
 
 @section('content')
+@if (session('status'))
+<div class="alert alert-success">
+    <strong>{{session('status')}}</strong>
+
+</div>
+
+        
+    @else
+    <div class="alert alert-succes">
+        <strong>{{session('status')}}</strong>
+    
+    </div>
+@endif
 @can('directiva.create')
     
 <a href="directiva/create" class="btn btn-primary">Crear miembros de junta directiva</a>
@@ -16,6 +29,7 @@
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   Registros
 </button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

@@ -18,6 +18,7 @@
           <h1 class="pb-5 text-center">crear registros</h1>
           <form action="/directiva"  method="post" enctype="multipart/form-data">
     @csrf
+
             <div class="row">
               <div class="col-md-6 mb-3">
                 <div class="form-group">
@@ -43,7 +44,14 @@
   <option value="2">Segundo</option>
   <option value="3">Tercero</option>
 </select> -->
-                <input type="text" class="form-control form-control-lg" placeholder="Grado" id="grado" name="Grado" tabindex="1" required>
+<select name="Grado" class="form-control form-select-md col-md-12" required>
+  <option selected>Selecciona el grado</option>
+   @foreach ($gradoSel as $item)
+<option  value="{{ $item->id }}">{{ $item->nombre_grado }} {{ $item->seccion }}</option>
+
+@endforeach
+</select>
+                {{-- <input type="text" class="form-control form-control-lg" placeholder="Grado" id="grado" name="Grado" tabindex="1" required> --}}
                 </div>
               </div>
               <div class="col-md-4 mb-3">

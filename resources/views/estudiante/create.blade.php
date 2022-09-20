@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+
 @if (session('status'))
 <div class="alert alert-success">
     <strong>{{session('status')}}</strong>
@@ -44,7 +45,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="inputPassword4" class="form-label">grado</label>
-                        <select name="grado" class="form-control form-select-md col-md-12">
+                        <select name="id_grado" class="form-control form-select-md col-md-12">
                             <option selected>Selecciona escolaridad</option>
                              @foreach ($gradoSel as $item)
                     <option  value="{{ $item->id }}">{{ $item->nombre_grado }} {{ $item->seccion }}</option>

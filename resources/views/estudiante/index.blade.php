@@ -4,11 +4,26 @@
 
 @section('content_header')
     <h1>Estudiante</h1>
+    @can('estudiante.create')
+                            
     <a class="btn btn-success" href="estudiante/create">Crear</a>
+    @endcan
 @stop
 
 @section('content')
-{{$userLogueado}}
+@if (session('status'))
+<div class="alert alert-success">
+    <strong>{{session('status')}}</strong>
+
+</div>
+
+        
+    @else
+    <div class="alert alert-succes">
+        <strong>{{session('status')}}</strong>
+    
+    </div>
+@endif
 <div>
     <div class="card">
         <div class="card-header">
@@ -36,13 +51,14 @@
                             <td>{{$st -> seccion}}</td> --}}
                             <td>{{$st -> escolaridad}}</td>
                             <td width="10px">
-                                
+                                @can('estudiante.edit')
                                 <a class="btn btn-primary" href="estudiante/{{$st->id}}/edit">Editar</a>
+                                @endcan
                                 <form action="{{route ('estudiante.destroy', $st->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Borrar</button>
-
+                                    
                                 </form>
                             </td>
                         </tr>

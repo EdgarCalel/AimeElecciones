@@ -18,10 +18,14 @@ return new class extends Migration
             $table->integer('codigo_student')->default(0);
             $table->string('nombre', 25);
             $table->string('apellido', 25);
+            $table->string('email')->unique();
             $table->string('escolaridad', 25);
             $table->string('foto_perfil', 300);
             $table->string('codigo_votacion', 15);
-              $table->boolean('codigo_status')->default(0);
+            $table->string('password');
+            $table->boolean('codigo_status')->default(0);
+            $table->integer('votos')->nullable();
+            $table->boolean('Directiva')->default(0);
             $table->unsignedBigInteger('id_grado');
             $table->timestamps();
         });

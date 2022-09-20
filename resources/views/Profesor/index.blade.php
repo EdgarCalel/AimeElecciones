@@ -4,7 +4,10 @@
 
 @section('content_header')
     <h1>Profesores</h1>
+    @can('profesor.create')
     <a class="btn btn-success" href="profesor/create">Crear</a>
+@endcan
+   
 @stop
 
 @section('content')
@@ -33,6 +36,8 @@
                             <td>{{$prof -> name}}</td>
                             <td>{{$prof -> email}}</td>
                             <td>{{$prof -> id_grado}}</td>
+                            @can('profesor.edit')
+                            
                             <td width="10px">
                                 
                                 <a class="btn btn-primary" href="profesor/{{$prof->id}}/edit">Editar</a>
@@ -40,9 +45,10 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Borrar</button>
-
+                                    
                                 </form>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Directivas;
 use App\Models\Estudiante;
+use App\Models\Grado;
+use Illuminate\Support\Facades\DB;
 class DirectivaController extends Controller
 {
     /**
@@ -14,10 +16,14 @@ class DirectivaController extends Controller
      */
     public function index()
     {
+        
+    
+
         $idUser = auth()->id();
-        $directivas= Directivas::all()
-        ->where('Directiva', "=", 0);
-        return view('Directiva.index')->with('directivas', $directivas);
+        $directivas= Estudiante::all()
+        ->where('directiva', "=", 0);
+        return view('Directiva.index', compact('directivas'));
+       
     }
 
     /**
@@ -27,8 +33,8 @@ class DirectivaController extends Controller
      */
     public function create()
     {
-     
-        return view('Directiva.create');
+     $gradoSel = Grado::all();
+        return view('Directiva.create')->with('gradoSel', $gradoSel);
     }
 
     /**
@@ -48,7 +54,7 @@ class DirectivaController extends Controller
              $imagen->move($rutaGuardarImg, $imagenProducto);
              $directivas['imagen'] = "$imagenProducto";
          }
-var_dump($directivas['imagen']);
+
          Directivas::create($directivas);
          return redirect('/directiva');
     }
@@ -72,7 +78,7 @@ var_dump($directivas['imagen']);
      */
     public function edit($id)
     {
-        $directiva = Directivas::find($id);
+        $directiva = Estudiante::find($id);
         return view('Directiva.edit')->with('directiva', $directiva);
     }
 
@@ -85,14 +91,25 @@ var_dump($directivas['imagen']);
      */
     public function update(Request $request, $id)
     {
-        $directiva =  Directivas::find($id);
-        $calculo =$directiva->votos;
-        $directiva->votos = $calculo +=1;
-        error_log($directiva ->votos);
- 
 
-        $directiva->save();
-        return redirect('/directiva');
+        $userLogueado = auth()->user()->email;
+        $email = DB::table('estudiantes')->where('email', $userLogueado)->value('codigo_status');
+        if ($email === 1) {
+            return redirect('/directiva')->with('status', "Ya a votado");
+        }else{
+
+            $userLogueado = auth()->user()->email;
+            $estudiante = DB::table('estudiantes')
+            ->where('email', '=', $userLogueado)
+            ->update(['codigo_status'=>1]);
+            
+            $directiva =  Estudiante::find($id);
+            $calculo =$directiva->votos;
+            $directiva->votos = $calculo +=1;
+            
+            $directiva->save();
+            return redirect('/directiva');
+        }
     }
 
     /**
@@ -103,7 +120,7 @@ var_dump($directivas['imagen']);
      */
     public function destroy($id)
     {
-        $directiva = Directivas::find($id);
+        $directiva = Estudiante::find($id);
         $directiva->delete();
         return redirect('/directiva');
     }
