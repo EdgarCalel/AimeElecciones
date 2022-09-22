@@ -14,14 +14,10 @@
 @if (session('status'))
 <div class="alert alert-success">
     <strong>{{session('status')}}</strong>
-
-</div>
-
-        
+</div>   
     @else
     <div class="alert alert-succes">
         <strong>{{session('status')}}</strong>
-    
     </div>
 @endif
 <div>

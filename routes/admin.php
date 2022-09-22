@@ -11,10 +11,9 @@ use App\Http\Controllers\ProfesorController;
 
 Route::resource('loginEstudiante', 'App\Http\Controllers\loginEstudianteController');
 
-Route::get('/', function () {
-    return view('admin.index');
-});
 
+Route::resource('/', HomeController::class);
+Route::resource('/auth', HomeController::class);
 Route::resource('directiva', DirectivaController::class)->names('directiva');
 Route::resource('usuarios', UserController::class)->middleware('can:usuarios.index')->only(['index','edit','update'])->names('usuarios');
 Route::resource('estudiante', EstudianteController::class)->middleware('can:estudiante.index')->names('estudiante');

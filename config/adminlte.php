@@ -275,8 +275,8 @@ return [
         // Sidebar items:
         [
             'text'    => 'Dashboard',
-            'url' => 'admin',
-            'can'=> 'admin.home'
+            'url' => 'admin.index',
+            
         ],
         [
             'text' => 'Roles',
