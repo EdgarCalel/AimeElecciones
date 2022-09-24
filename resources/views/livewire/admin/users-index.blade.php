@@ -1,7 +1,8 @@
 <div>
     <div class="card">
         <div class="card-header">
-            <input wire:model="search" class="form-control"  placeholder="Ingrese nombre del alumno o email">
+            {{$status}}
+            <input wire:model="search" class="form-control"  placeholder="Ingrese nombre del alumnos o email">
         </div>
         @if ($users->count())
         <div class="card-body">
@@ -34,7 +35,7 @@
         </div>
         @endif
         <div class="card-footer">
-            {{ $users -> links() }}
+            {{-- {{ $users -> links() }} --}}
         </div>
     </div>
 </div>

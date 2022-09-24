@@ -7,13 +7,12 @@
 @stop
 
 @section('content')
+
 @if (session('status'))
 <div class="alert alert-success">
     <strong>{{session('status')}}</strong>
 
 </div>
-
-        
     @else
     <div class="alert alert-succes">
         <strong>{{session('status')}}</strong>
@@ -97,7 +96,7 @@
                 <div class="card h-100 shadow-sm">
                     <div class="text-center">
                         <div class="img-hover-zoom img-hover-zoom--colorize imgHover">
-                            <img class="shadow" src="/imagen/{{$directiva->imagen}}" alt>
+                            <img class="shadow" src="imagen/estudiante/{{$directiva->foto_perfil}}" alt>
     
                         </div>
                     </div>
@@ -105,10 +104,10 @@
                         <div class="clearfix mb-3">
                         </div>
                         <div class="my-2 text-center">
-                           <h1>{{$directiva->nombres}} </h1>
+                           <h1>{{$directiva->nombre}} </h1>
                         </div>
                         <div class="mb-3">
-                            <h2 class="text-uppercase text-center role">{{$directiva->apellidos}}</h2>
+                            <h2 class="text-uppercase text-center role">{{$directiva->apellido}}</h2>
                         </div>
                         <div class="box contentBoton">
                         

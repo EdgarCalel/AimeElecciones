@@ -33,7 +33,9 @@ class User extends Authenticatable
         "id_grado",
         "escolaridad",
         "password",
-        "profile_photo_path"
+        "profile_photo_path",
+        "is_estudiante",
+        "foto_perfil"
     ];
 
     /**

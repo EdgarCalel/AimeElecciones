@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Grado;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class ProfesorController extends Controller
 {
@@ -16,7 +17,10 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        $profesor = User::all();
+        $profesor = DB::table('users')
+        ->where('is_estudiante', '=', 0)
+        ->get();
+       
         return view('Profesor.index')->with('profesor', $profesor);
     }
 
@@ -45,10 +49,11 @@ class ProfesorController extends Controller
             $rutaGuardarImg = 'imagen/profesor/';
             $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
             $imagen->move($rutaGuardarImg, $imagenProducto);
-            $profesor['profile_photo_path'] = "$imagenProducto";
+            $profesor['foto_perfil'] = "$imagenProducto";
         }
         $clave = Hash::make('123456789');
         $profesor['password'] = "$clave";
+        $profesor['is_estudiante'] = 0;
         User::create($profesor);
         return redirect('/profesor');
 

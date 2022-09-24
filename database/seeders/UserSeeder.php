@@ -21,7 +21,8 @@ class UserSeeder extends Seeder
             'email'=>'admin@hotmail.com',
             'id_grado'=> 0,
             'escolaridad'=>'Director',
-            'password'=> bcrypt('123456789')
+            'password'=> bcrypt('123456789'),
+            'is_estudiante'=>0
         ])->assignRole('Director');
 
     }

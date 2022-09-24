@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+{{$usersSelect}}
 @if (session('status'))
 <div class="alert alert-success">
     <strong>{{session('status')}}</strong>
@@ -25,7 +26,7 @@
         <div class="card-header">
             <input wire:model="search" class="form-control"  placeholder="Ingrese nombre del alumno o email">
         </div>
-        @if ($estudiante->count())
+        @if ($usersSelect->count())
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
@@ -35,21 +36,23 @@
                         <th>Grado</th>
                         <th>Seccion</th>
                         <th>Escolaridad</th>
+                        <th>Directiva</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($estudiante as $st)
+                    @foreach ($usersSelect as $st)
                         <tr>
                             <td>{{$st ->id}}</td>
                             <td>{{$st -> nombre}} {{$st -> apellido}}</td>
-                            {{-- <td>{{$st -> nombre_grado}}</td>
-                            <td>{{$st -> seccion}}</td> --}}
+                            <td>{{$st -> nombre_grado}}</td>
+                            <td>{{$st -> seccion}}</td>
                             <td>{{$st -> escolaridad}}</td>
+                            <td></td>
                             <td width="10px">
-                                @can('estudiante.edit')
+                             
                                 <a class="btn btn-primary" href="estudiante/{{$st->id}}/edit">Editar</a>
-                                @endcan
+                            
                                 <form action="{{route ('estudiante.destroy', $st->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')

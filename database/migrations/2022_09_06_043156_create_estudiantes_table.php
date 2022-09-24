@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('codigo_votacion', 15);
             $table->string('password');
             $table->boolean('codigo_status')->default(0);
-            $table->integer('votos')->nullable();
+            $table->integer('votos')->nullable()->default(0);
             $table->boolean('Directiva')->default(0);
             $table->unsignedBigInteger('id_grado');
             $table->timestamps();

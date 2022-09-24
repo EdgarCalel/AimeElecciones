@@ -18,7 +18,8 @@ class Estudiante extends Model
         "password",
         "codigo_votacion",
         "codigo_status",
-        "id_grado"
+        "id_grado",
+  
      ];
          /**
      * The attributes that should be hidden for serialization.
@@ -43,9 +44,9 @@ class Estudiante extends Model
    *
    * @var array
    */
-  protected $appends = [
-      'profile_photo_url',
-  ];
+//   protected $appends = [
+//       'profile_photo_url',
+//   ];
   public function adminlte_image(){
       return 'https://picsum.photos/300/300';
   }

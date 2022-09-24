@@ -19,18 +19,18 @@
                 <div class="card h-100 shadow-sm">
                     <div class="text-center">
                         <div class="img-hover-zoom img-hover-zoom--colorize">
-                            <img class="shadow" src="/imagen/{{$directiva->imagen}}" width="60%">
+                            <img class="shadow" src="/imagen/estudiante/{{$directiva->foto_perfil}}" width="60%">
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="clearfix mb-3">
                         </div>
                         <div class="my-2 text-center">
-                           <h1>{{$directiva->nombres}} </h1>
+                           <h1>{{$directiva->nombre}} </h1>
                 
                         </div>
                         <div class="box">
-                          <h2>{{$directiva->Puesto}}</h2>
+                          <h2>{{$directiva->apellidos}}</h2>
                         </div>
                         <button class="btn btn-success">Votar</button>
                     </div>

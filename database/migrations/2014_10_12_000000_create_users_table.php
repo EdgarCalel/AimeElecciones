@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
-            $table->boolean('estudiante')->default(0);
+            $table->string('foto_perfil', 2048)->nullable();
+            $table->integer('is_estudiante');
             $table->boolean('changePassword')->default(0);
             $table->timestamps();
         });

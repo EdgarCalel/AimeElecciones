@@ -15,10 +15,10 @@ Route::resource('loginEstudiante', 'App\Http\Controllers\loginEstudianteControll
 Route::resource('/', HomeController::class);
 Route::resource('/auth', HomeController::class);
 Route::resource('directiva', DirectivaController::class)->names('directiva');
-Route::resource('usuarios', UserController::class)->middleware('can:usuarios.index')->only(['index','edit','update'])->names('usuarios');
-Route::resource('estudiante', EstudianteController::class)->middleware('can:estudiante.index')->names('estudiante');
-Route::resource('grado', GradoController::class)->middleware('can:grado.index')->names('grado');
-Route::resource('profesor', ProfesorController::class)->middleware('can:profesor.index')->names('profesor');
+Route::resource('usuarios', UserController::class)->only(['index','edit','update'])->names('usuarios');
+Route::resource('estudiante', EstudianteController::class)->names('estudiante');
+Route::resource('grado', GradoController::class)->names('grado');
+Route::resource('profesor', ProfesorController::class)->names('profesor');
 
 
 

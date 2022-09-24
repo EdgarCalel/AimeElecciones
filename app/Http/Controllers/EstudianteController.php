@@ -19,13 +19,15 @@ class EstudianteController extends Controller
      */
     public function index()
     {
-        $userLogueado = auth()->user()->id;
-        $estudiante = DB::table('estudiantes')
-        ->where('id_grado', '=', $userLogueado)
+        $userLogueado = auth()->user()->id_grado;
+        $usersSelect = DB::table('estudiantes')
+        ->join('grados', 'grados.id', '=', 'estudiantes.id_grado')
+        ->select('estudiantes.*', 'grados.nombre_grado','grados.seccion')
+        ->where('estudiantes.id_grado', '=', $userLogueado)
         ->get();
 
         //   $estudiante = Estudiante::all();
-        return view('estudiante.index', compact('userLogueado', 'estudiante'));
+        return view('estudiante.index', compact('userLogueado', 'usersSelect'));
     }
 
     /**
@@ -60,6 +62,7 @@ class EstudianteController extends Controller
             $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
             $imagen->move($rutaGuardarImg, $imagenProducto);
             $estudiante['foto_perfil']  = "$imagenProducto";
+            $user['foto_perfil']  = "$imagenProducto";
         }
         $nombre = $request->get('nombre');
         $nombre1 = explode(" ", $nombre);
@@ -71,12 +74,16 @@ class EstudianteController extends Controller
         $estudiante['codigo_votacion']  = "$codRandom";
         $estudiante['codigo_student']  = 0;
         $estudiante['codigo_status']  = 0;
+        $estudiante['Directiva']  = $request->get('DirectivaSelect');
+
+
 
         $user['email']  = strtolower($nombre1[0]) . strtolower($apellido2[0]) ."-" .strtolower($codStudntEmail) ."@hotmail.com";
         $user['name'] = $request->get('nombre');
         $user['lastname'] = $request->get('apellido');
         $user['password'] = "$clave";
-        $user['estudiante'] = 1;
+        $user['is_estudiante'] = true;
+
         User::create($user)->assignRole('Estudiante');
         Estudiante::create($estudiante);
        
@@ -121,7 +128,18 @@ class EstudianteController extends Controller
         $user ->nombre = $request->get('nombre');
         $user ->apellido = $request->get('apellido');
         $user ->escolaridad = $request->get('escolaridad');
-        $user ->foto_perfil = $request->get('foto_perfil');
+        $user ->Directiva = $request->get('DirectivaSelect');
+
+
+        // if($imagen = $request->file('imagen')) {
+        //     $rutaGuardarImg = 'imagen/estudiante/';
+        //     $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
+        //     $imagen->move($rutaGuardarImg, $imagenProducto);
+        //     $estudiante['foto_perfil']  = "$imagenProducto";
+        //     $user['foto_perfil']  = "$imagenProducto";
+        // }else{
+           
+        // }
 
         $user ->save();
     

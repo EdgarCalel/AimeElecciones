@@ -17,11 +17,15 @@ class DirectivaController extends Controller
     public function index()
     {
         
-    
+        // $usersSelect = DB::table('estudiantes')
+        // ->join('grados', 'grados.id', '=', 'estudiantes.id_grado')
+        // ->where('id_grado', '=', $userLogueado)
+        // ->get();
 
-        $idUser = auth()->id();
+        $userLogueado = auth()->user()->id_grado;
         $directivas= Estudiante::all()
-        ->where('directiva', "=", 0);
+        ->where('Directiva', "=", 1)
+        ->where('id_grado', "=", $userLogueado);
         return view('Directiva.index', compact('directivas'));
        
     }
@@ -34,7 +38,8 @@ class DirectivaController extends Controller
     public function create()
     {
      $gradoSel = Grado::all();
-        return view('Directiva.create')->with('gradoSel', $gradoSel);
+     $student = Estudiante::all();
+        return view('Directiva.create', compact('gradoSel','student'));
     }
 
     /**
@@ -78,8 +83,12 @@ class DirectivaController extends Controller
      */
     public function edit($id)
     {
+        $users = DB::table('estudiantes')
+                ->where('id', '=', $id)
+                ->get();
+                
         $directiva = Estudiante::find($id);
-        return view('Directiva.edit')->with('directiva', $directiva);
+        return view('Directiva.edit', compact('directiva', 'users'));
     }
 
     /**
