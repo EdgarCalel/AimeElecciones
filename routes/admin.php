@@ -9,6 +9,8 @@ use App\Http\Controllers\GradoController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\ProfesorController;
 
+use App\Http\Controllers\UserPdfController;
+
 Route::resource('loginEstudiante', 'App\Http\Controllers\loginEstudianteController');
 
 
@@ -19,6 +21,10 @@ Route::resource('usuarios', UserController::class)->only(['index','edit','update
 Route::resource('estudiante', EstudianteController::class)->names('estudiante');
 Route::resource('grado', GradoController::class)->names('grado');
 Route::resource('profesor', ProfesorController::class)->names('profesor');
+
+Route::get('/pdf', [UserPdfController::class, 'index']);
+
+Route::get('download-pdf', [UserPdfController::class, 'downloadPdf'])->name('download-pdf');
 
 
 

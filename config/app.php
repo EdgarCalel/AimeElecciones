@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Facade;
 
+
+
 return [
 
     /*
@@ -196,6 +198,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+
+        //libreria para colocar los pdf
+        Barryvdh\DomPDF\ServiceProvider::class,
+        
 
     ],
 
